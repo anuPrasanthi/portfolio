@@ -1,0 +1,29 @@
+/* ScrollDownIndicator.css */
+.scroll-down-indicator {
+    position: fixed; /* Fixed position so it stays in place while scrolling */
+    bottom: 20px; /* Position from the bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center alignment */
+    cursor: pointer; /* Change cursor to pointer */
+    text-align: center; /* Center text */
+    color: white; /* Text color */
+    font-size: 18px; /* Font size */
+}
+
+.arrow-down {
+    font-size: 24px; /* Arrow size */
+    animation: bounce 1.5s infinite; /* Bounce animation */
+}
+
+/* Bounce animation */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0); /* No movement */
+    }
+    40% {
+        transform: translateY(-10px); /* Move up */
+    }
+    60% {
+        transform: translateY(-5px); /* Move down slightly */
+    }
+}

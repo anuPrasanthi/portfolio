@@ -3,14 +3,17 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: #ffffff;
-  background-color: #040a15; /* Your background color */
-  overflow: hidden; /* Prevent scrollbars from appearing */
+  /* background-color: #040a15;  */
+  overflow: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 .App {
   position: relative;
   z-index: 1; /* Keep content above the wave effect */
   text-align: center; /* Center text */
+  display: grid;
 }
 
 h1 {

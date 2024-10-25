@@ -6,11 +6,11 @@ import './ScrollDownIndicator.css';
 const ScrollDownIndicator = () => {
     const navigate = useNavigate();
     const scrollDown = () => {
-        // window.scrollTo({
-        //     top: window.innerHeight,
-        //     behavior: 'smooth',
-        // });
-        navigate('/about');
+        window.scrollTo({
+            top: window.innerHeight,
+            behavior: 'smooth',
+        });
+        navigate('#about');
     };
 
     return (

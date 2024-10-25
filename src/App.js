@@ -5,12 +5,11 @@ import NavBar from "./components/NavBar/NavBar";
 import AppRoute from "./Routes/AppRoute";
 import FloatingCircle from "./components/FloatingBubble/FloatingBubble";
 import { ThemeProvider } from "./components/ThemeProvider/ThemeProvider";
-import Home from "./Pages/Home/Home";
-import About from "./Pages/About/About";
-import "./App.css"; // Your main styles
+import "./App.css";
 
 const App = () => {
-  const [theme, setTheme] = useState("dark"); // Default theme
+  const [theme, setTheme] = useState("dark");
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -21,9 +20,23 @@ const App = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      console.log(window.innerWidth)
+      debugger
+      setIsMobile(window.innerWidth <= 768); // Mobile screen width threshold
+    };
+
+    handleResize(); // Check on load
+    window.addEventListener('resize', handleResize); // Listen for window resize
+    return () => window.removeEventListener('resize', handleResize); // Cleanup listener
+  }, []);
+
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
+    console.log(newTheme)
+    debugger
     localStorage.setItem("theme", newTheme);
   };
 
@@ -34,13 +47,10 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <NavBar handleTheme={toggleTheme} />
-        {/* Render both Home and About components initially */}
-        <Home />
-        <About />
+        <NavBar handleTheme={toggleTheme} theme={theme} isMobile={isMobile} />
         <AppRoute />
         {/* <FloatingCircle/> */}
-        {/* <BackgroundEffect /> */}
+        <BackgroundEffect />
       </div>
     </ThemeProvider>
   );

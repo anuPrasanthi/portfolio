@@ -1,0 +1,37 @@
+.contactStyle{
+    justify-content: center;
+    display: grid !important;
+    margin-bottom: 30px;
+}
+.emailStyle{
+    /* display: flex; */
+}
+.iconStyle{
+    animation: bounce 1.5s ease 3 forwards;
+    padding-top: 2px;
+}
+.copyStyle{
+    padding-top: 2px;
+    cursor: pointer;
+}
+.socialStyle{
+  justify-content: center;
+}
+.linkedinStyle{
+  background-color: var(--voyager-color-action-stick);
+  color: hsl(210, 100%, 45%);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+@keyframes iconStyle {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-30px); /* Bounce height */
+    }
+    60% {
+      transform: translateY(-15px); /* Second bounce height */
+    }
+  }

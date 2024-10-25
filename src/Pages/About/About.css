@@ -1,3 +1,23 @@
-body{
- background-color: '#90caf9';
+body {
+    background-color: '#90caf9';
+    font-family: 'Open Sans', sans-serif;
+}
+
+.aboutSec2 {
+    text-align: left;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+p {
+    font-family: 'Open Sans', sans-serif; /* Consistent body text font */
+    font-size: 1em; /* Standard font size for paragraphs */
+    margin-bottom: 15px; /* Spacing between paragraphs */
+    line-height: 1.5; /* Improved readability */
+    text-align: justify; /* Justified text for a cleaner look */
+    margin-right: 10px;
 }

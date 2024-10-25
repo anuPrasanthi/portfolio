@@ -6,7 +6,7 @@ import "./Home.css"; // Ensure you reference the external CSS for styling
 
 const Home = () => {
   return (
-    <div className="homeContainer">
+    <div className="homeContainer" id="home">
       <Grid container spacing={2}>
         <Grid size={8}>
           <span>

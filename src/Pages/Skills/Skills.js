@@ -3,6 +3,7 @@ import React from "react";
 import FloatingCircle from "../../components/FloatingBubble/FloatingBubble";
 import ScrollDownIndicator from "../ScrollDownIndicator/ScrollDownIndicator";
 import { TECHNOLOGIES } from "../../Lib/data";
+import Chip from '@mui/material/Chip';
 import Grid from "@mui/material/Grid2";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -29,7 +30,7 @@ const Skills = () => {
   ];
   return (
     <Box sx={{ width: "100%" }}>
-      <h3>SPECIALIZING IN</h3>
+      <Chip label="What I Do"  className="skillTile"/>
       <Grid
         container
         rowSpacing={1}

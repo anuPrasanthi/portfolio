@@ -1,10 +1,10 @@
+.contactTile{
+  margin: 3rem 0;
+}
 .contactStyle{
     justify-content: center;
     display: grid !important;
     margin-bottom: 30px;
-}
-.emailStyle{
-    /* display: flex; */
 }
 .iconStyle{
     animation: bounce 1.5s ease 3 forwards;

@@ -1,5 +1,4 @@
 .homeContainer {
-    height: 100vh; /* Full screen height */
     background-image: url('../../Images/dark.jpg'); /* Set your background image */
     background-size: cover; /* Ensure the background covers the entire screen */
     background-position: center; /* Center the background image */
@@ -9,6 +8,10 @@
     align-items: center; /* Center content vertically */
     position: relative; /* Required for proper positioning of ScrollDownIndicator */
   }
+.subContainer{
+  align-items: center;
+  height: 100vh;
+}
 .sec1Style {
 margin: 0 10px;
 }
@@ -33,32 +36,50 @@ margin: 0 10px;
 p {
     text-align: justify !important;
 }
+.statusStyle{
+    float: inline-start;
+    align-items: center;
+    display: inline-flex;
+    height: 30px;
+}
+.statusStyle p{
+    margin-left: 10px;
+}
 .badgeStyle {
-    position: relative; /* Ensure the badge is positioned correctly */
+    position: relative;
+    width: 12px;
+    height: 12px;
+    background-color: #4caf50; /* Green color */
+    border-radius: 50%;
+    margin-left: 5px;
+    /* float: left; */
 }
-.badgeStyle span{
-    padding: 6px;
-    border-radius: 100%;
-    border: 2px solid;
-    border-color: var(--success-500); /* Use a CSS variable for color */
-    display: inline-block; /* Ensure the span behaves like a block */
-    transform-origin: center; /* Scale from the center */
+
+.badgeStyle::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #4caf50; /* Border color matching the green dot */
+    border-radius: 50%;
     animation: ripple 1.2s ease-in-out infinite;
+    opacity: 1;
 }
+
+/* Keyframes for pulsing animation */
 @keyframes ripple {
     0% {
         transform: scale(1);
         opacity: 1;
-      };
-      50% {
+    }
+    100% {
         transform: scale(2);
         opacity: 0;
-      };
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      };
+    }
 }
+
 .scroll-down-indicator {
     position: fixed; /* Fixed position so it stays in place while scrolling */
     bottom: 20px; /* Position from the bottom */

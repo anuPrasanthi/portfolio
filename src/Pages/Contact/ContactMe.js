@@ -4,7 +4,7 @@ import FloatingCircle from "../../components/FloatingBubble/FloatingBubble";
 import ScrollDownIndicator from "../ScrollDownIndicator/ScrollDownIndicator";
 import Grid from "@mui/material/Grid2";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
-import { Box, Typography, Snackbar } from "@mui/material";
+import { Box, Typography, Snackbar, Chip } from "@mui/material";
 import MuiAlert from "@mui/material/Alert";
 import PhoneAndroidOutlinedIcon from '@mui/icons-material/PhoneAndroidOutlined';
 import ContentCopyOutlinedIcon from "@mui/icons-material/ContentCopyOutlined";
@@ -35,6 +35,7 @@ const ContactMe = () => {
   };
   return (
     <Box sx={{ width: "100%" }}>
+      <Chip label="Contact" className="contactTile" />
       <Grid
         container
         rowSpacing={1}

@@ -1,6 +1,5 @@
-/* ScrollDownIndicator.css */
 .scroll-down-indicator {
-    position: fixed; /* Fixed position so it stays in place while scrolling */
+    position: fixed;
     bottom: 20px; /* Position from the bottom */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%); /* Center alignment */

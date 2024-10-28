@@ -42,9 +42,9 @@
 /* Container for the floating bubble */
 .bubble-container {
   position: absolute;
-  top: 35%;
+  top: 28%;
   /* Center vertically */
-  right: 10%;
+  right: 5%;
   /* Right-align with a margin */
   transform: translateY(-50%);
   /* Adjust to center vertically */

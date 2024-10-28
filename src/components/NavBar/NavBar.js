@@ -17,8 +17,6 @@ import "./NavBar.css";
 
 export default function NavBar(props) {
   const { handleTheme, theme, isMobile } = props;
-  console.log(isMobile);
-  debugger;
   const navigate = useNavigate();
   const navItems = [
     { name: "About", path: "#about" },

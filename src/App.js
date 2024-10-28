@@ -22,8 +22,6 @@ const App = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      console.log(window.innerWidth)
-      debugger
       setIsMobile(window.innerWidth <= 768); // Mobile screen width threshold
     };
 
@@ -35,8 +33,6 @@ const App = () => {
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
-    console.log(newTheme)
-    debugger
     localStorage.setItem("theme", newTheme);
   };
 

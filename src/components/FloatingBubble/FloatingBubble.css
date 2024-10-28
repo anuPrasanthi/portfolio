@@ -41,55 +41,56 @@
 
 /* Container for the floating bubble */
 .bubble-container {
-    position: absolute;
-    top: 35%; /* Center vertically */
-    right: 10%; /* Right-align with a margin */
-    transform: translateY(-50%); /* Adjust to center vertically */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: float 3s ease-in-out infinite; /* Floating animation */
+  position: absolute;
+  top: 35%;
+  /* Center vertically */
+  right: 10%;
+  /* Right-align with a margin */
+  transform: translateY(-50%);
+  /* Adjust to center vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: float 3s ease-in-out infinite;
+  /* Floating animation */
 }
 
 /* Flower structure for the image */
 .bubble-image {
-    width: 190px; /* Width of the flower */
-    height: 190px; /* Height of the flower */
-    object-fit: cover; /* Cover the entire area */
-    border-radius: 50% 50% 40% 60% / 60% 40% 70% 30%; /* Wavy shape resembling flower petals */
-    transition: border-radius 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+  width: 190px;
+  /* Width of the flower */
+  height: 190px;
+  /* Height of the flower */
+  object-fit: cover;
+  /* Cover the entire area */
+  border-radius: 50%;
+  /* Turn into a perfect circle */
 }
 
 /* Hover effect to pop out the flower */
 .bubble-image.hovered {
-    border-radius: 50%; /* Turn into a perfect circle */
-    transform: scale(1.1); /* Enlarge slightly */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Shadow for pop-out effect */
+  border-radius: 50% 50% 40% 60% / 60% 40% 70% 30%;
+  /* Wavy shape resembling flower petals */
+  transition: border-radius 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  /* Smooth transition */
+  transform: scale(1.1);
+  /* Enlarge slightly */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  /* Shadow for pop-out effect */
 }
 
 /* Floating animation keyframes */
 @keyframes float {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px); /* Floating effect */
-    }
-    100% {
-        transform: translateY(0);
-    }
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+    /* Floating effect */
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
-
-
-
-
-
-
-  
-  
-  
-  
-
-  
-  
-  

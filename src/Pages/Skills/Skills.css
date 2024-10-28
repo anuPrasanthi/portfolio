@@ -1,0 +1,27 @@
+.skillTile {
+    margin-top: 3rem;
+}
+h3{
+  margin-bottom: 3rem !important;
+}
+h2{
+    margin: 0 0 10px;
+}
+p{
+    text-align: center;
+}
+.paperstyle{
+justify-content: center;
+margin: 3rem 0;
+}
+.techStyle{
+    align-items: center;
+}
+.logoStyle{
+    max-width:40%;
+    max-height: 40%;
+}
+.logoStyle:hover{
+    transform: scale(1.5);
+    cursor: pointer;
+}

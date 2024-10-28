@@ -1,0 +1,54 @@
+body {
+    background-color: '#90caf9';
+    font-family: 'Open Sans', sans-serif;
+}
+.aboutTile{
+    margin-top: 3rem;
+}
+.aboutbody{
+    padding: 3rem 0;
+}
+.aboutSec1 {
+    display: flex; /* Use flexbox to align items */
+    position: relative; /* Positioning context for absolute elements */
+    align-items: center;
+    justify-content: center;
+}
+
+.aboutSec1 div {
+    background-color: gray;
+    height: 360px;
+    width: 320px;
+    margin-top: 40px;
+    margin-right: 40px;
+    border: 8px solid #121212;
+}
+
+.profileStyle {
+    margin-left: 40px;
+    margin-bottom: 70px;
+    height: 360px;
+    width: 280px;
+    position: absolute; /* Keep it relative for proper layout */
+    z-index: 1; /* Ensure the image is above the gray div */
+    border: 8px solid #121212;
+}
+
+.aboutSec2 {
+    text-align: left;
+}
+
+/* h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+} */
+p {
+    font-family: 'Open Sans', sans-serif; /* Consistent body text font */
+    font-size: 1em; /* Standard font size for paragraphs */
+    margin-bottom: 15px; /* Spacing between paragraphs */
+    line-height: 1.5; /* Improved readability */
+    text-align: justify; /* Justified text for a cleaner look */
+    margin-right: 10px;
+}

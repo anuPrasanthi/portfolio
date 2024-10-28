@@ -1,25 +1,55 @@
-import './App.css';
-import comingSoon from './images/coming-soon.jpg'
+// src/App.js
+import React, { useState, useEffect } from "react";
+import BackgroundEffect from "./components/BackgroundEffect";
+import NavBar from "./components/NavBar/NavBar";
+import AppRoute from "./Routes/AppRoute";
+import FloatingCircle from "./components/FloatingBubble/FloatingBubble";
+import { ThemeProvider } from "./components/ThemeProvider/ThemeProvider";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [theme, setTheme] = useState("dark");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else {
+      localStorage.setItem("theme", theme);
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Mobile screen width threshold
+    };
+
+    handleResize(); // Check on load
+    window.addEventListener('resize', handleResize); // Listen for window resize
+    return () => window.removeEventListener('resize', handleResize); // Cleanup listener
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+  };
+
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={comingSoon} className="poster" alt="logo" />
-        {/* <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <NavBar handleTheme={toggleTheme} theme={theme} isMobile={isMobile} />
+        <AppRoute />
+        {/* <FloatingCircle/> */}
+        <BackgroundEffect />
+      </div>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;

@@ -8,7 +8,7 @@ h2{
     margin: 0 0 10px;
 }
 p{
-    text-align: center;
+    justify-self: center
 }
 .paperstyle{
 justify-content: center;

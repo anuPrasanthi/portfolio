@@ -11,10 +11,11 @@
   
  /* BackgroundEffect.css */
 .wave-canvas {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: -1; /* Behind other content */
+  z-index: -1; 
+  /* Behind other content */
  
 }
 

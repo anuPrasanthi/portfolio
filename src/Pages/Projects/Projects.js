@@ -63,10 +63,10 @@ const Projects = () => {
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
         {/* /* <Grid size={6}></Grid>
         <Grid size={6}></Grid>  */}
-        <Slider {...settings}>
+        {/* <Slider {...settings}> */}
         {items?.map((item, index) => (
           <div key={index} className="slide" style={{ padding: "20px", textAlign: "center" }}>
-            {'item?.title'}
+            {/* {item?.title} */}
             {/* <Typography variant="h4" color="white" align="center" sx={{ pt: 2 }}>
               {item?.title}
             </Typography> */}
@@ -75,7 +75,7 @@ const Projects = () => {
             </Typography> */}
           </div>
         ))}
-        </Slider>
+        {/* </Slider> */}
       </Grid>
     </>
 

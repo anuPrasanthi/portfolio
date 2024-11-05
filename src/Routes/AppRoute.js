@@ -10,7 +10,7 @@ import ContactMe from '../Pages/Contact/ContactMe';
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<AllSections />} />
+      <Route path="/portfolio/" element={<AllSections />} />
     </Routes>
   );
 };

@@ -59,7 +59,7 @@ const Skills = () => {
           </Grid>
         ))}
       </Grid>
-      <h3>The skills, tools and technologies I am really good at:</h3>
+      <h3 className="techTile">The skills, tools and technologies I am really good at:</h3>
       <Grid container spacing={6} columns={{ xs: 24, sm: 24, md: 24 }} className='techStyle'>
         {TECHNOLOGIES.map((technology, index) => (
           <TechDetails technology={technology} key={index} />

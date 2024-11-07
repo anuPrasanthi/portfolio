@@ -19,13 +19,14 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 const ContactMe = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [copiedVal, setCopiedVal] = useState("");
+  const savedTheme = localStorage.getItem("theme");
   const email = "anuprasanthipothula@gmail.com";
   const mobileno = "+1(437)974-5872";
   const handleCopyEmail = (e, val) => {
     console.log(e);
     navigator.clipboard.writeText(val);
     setCopiedVal(e);
-    setSnackbarOpen(true);
+    setSnackbarOpen(true); 
   };
   const handleCloseSnackbar = (event, reason) => {
     if (reason === "clickaway") {
@@ -72,7 +73,7 @@ const ContactMe = () => {
         className='socialStyle'
       >
        <a href="https://github.com/anuPrasanthi" target="_blank">
-        <GitHubIcon style={{ color: 'white' }}/>
+        <GitHubIcon style={savedTheme==='light' ? { color: 'black' } :{ color: 'white' }}/>
       </a>
       <a href="https://www.linkedin.com/in/anu-prasanthi-pothula-3a7716182/" target="_blank" rel="noopener noreferrer">
       <LinkedInIcon className="linkedinStyle"/>

@@ -15,15 +15,19 @@ body {
     justify-content: center;
 }
 
-.aboutSec1 div {
+.imgStyle {
     background-color: gray;
     height: 360px;
     width: 320px;
     margin-top: 40px;
     margin-right: 40px;
+}
+.imagelight{
+    border: 8px solid white;
+}
+.imageDark {
     border: 8px solid #121212;
 }
-
 .profileStyle {
     margin-left: 40px;
     margin-bottom: 70px;
@@ -31,7 +35,6 @@ body {
     width: 280px;
     position: absolute; /* Keep it relative for proper layout */
     z-index: 1; /* Ensure the image is above the gray div */
-    border: 8px solid #121212;
 }
 
 .aboutSec2 {

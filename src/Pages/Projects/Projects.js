@@ -8,6 +8,7 @@ import Chip from "@mui/material/Chip";
 import Grid from "@mui/material/Grid2";
 import Slider from "react-slick";
 import Box from "@mui/material/Box";
+import TechDetails from "../Skills/TechDetails";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Projects.css";
@@ -24,62 +25,56 @@ const Projects = () => {
     arrows: false,
     pauseOnHover: true,
   };
-  const items = [
-    { title: "Slide 1", content: "This is the first slide" },
-    { title: "Slide 2", content: "This is the second slide" },
-    { title: "Slide 3", content: "This is the third slide" },
-  ];
 
   const projectInfo = [
     {
-      name: "Wingie",
-      imageUrl: "",
-      skills: ["React", "Redux", "Javascript", "css"],
+      name: "GlamUp",
+      skills: ["React", "Redux", "JavaScript","Node.Js","MaterialUi", "CSS"],
       description:
-        "A platform for comparing and finding affordable flights, as well as booking and purchasing tickets safely and easily in a few simple clicks.",
-      src: "",
+        "A modern and user-friendly e-commerce platform that redefines the online shopping experience. Glamup offers a diverse range of clothing and accessories, catering to various styles and preferences.",
     },
     {
-      name: "Pepehousing",
-      imageUrl: "",
-      skills: ["React", "Redux", "Javascript", "css"],
+      name: "TickeTribe",
+      skills: ['React', 'Node', 'Express', 'MongoDB', 'WebSockets', 'Stripe' , 'Firebase'],
       description:
-        "A platform for renting a flat or room in Poland. You may browse hundreds of verified deals, contact the vendor, and pay online in a simple and secure manner.",
-      src: "",
-    },
-    {
-      name: "Wingie",
-      imageUrl: "",
-      skills: ["React", "Redux", "Javascript", "css"],
-      description:
-        "A platform for comparing and finding affordable flights, as well as booking and purchasing tickets safely and easily in a few simple clicks.",
-      src: "",
+        "An event booking platform where users can see available events in real-time, book tickets, and receive instant updates on availability. Add features like event reminders, QR code generation for ticket verification, and seat selection.",
     },
   ];
+
   return (
-    // <Box sx={{ width: "100%" }}>
     <>
       <Chip label="Projects" className="projectsTile" />
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
-        {/* /* <Grid size={6}></Grid>
-        <Grid size={6}></Grid>  */}
-        {/* <Slider {...settings}> */}
-        {items?.map((item, index) => (
-          <div key={index} className="slide" style={{ padding: "20px", textAlign: "center" }}>
-            {/* {item?.title} */}
-            {/* <Typography variant="h4" color="white" align="center" sx={{ pt: 2 }}>
-              {item?.title}
-            </Typography> */}
-            {/* <Typography variant="body1" color="white" align="center">
-              {item.content}
-            </Typography> */}
-          </div>
-        ))}
-        {/* </Slider> */}
-      </Grid>
+      <Box
+        className="carousel-container"
+        sx={{ width: "100%", maxWidth: 800, margin: "auto" }}
+      >
+        <Slider {...settings}>
+          {projectInfo.map((project, index) => (
+            <div key={index} className="slide" style={{ padding: "20px" }}>
+              <Typography variant="h5" align="center" className="slideStyle">
+                {project.name}
+              </Typography>
+              <Typography variant="body1" align="center" color="textSecondary" className="descStyle">
+                {project.description}
+              </Typography>
+              <Box
+                sx={{ display: "flex", justifyContent: "center", gap: "8px" }}
+              >
+                {project.skills.map((skill, idx) => (
+                  <Chip
+                  key={idx}
+                  label={skill}
+                  variant="outlined"
+                  size="small"
+                  sx={{ borderColor: "#8ddd8d", color: "#8ddd8d", marginBottom:'15px'}}
+                  />
+                ))}
+              </Box>
+            </div>
+          ))}
+        </Slider>
+      </Box>
     </>
-
-    // </Box>
   );
 };
 

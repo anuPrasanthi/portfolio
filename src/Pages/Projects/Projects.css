@@ -1,3 +1,10 @@
 .projectsTile{
  margin: 3rem 0;
 }
+.slideStyle {
+ margin-bottom: 15px !important;
+ color: #8ddd8d !important;
+}
+.descStyle {
+ margin-bottom: 15px !important;
+}

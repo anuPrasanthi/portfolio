@@ -13,10 +13,11 @@ import "./Skills.css";
 
 const TechDetails = (props) => {
   const { technology } = props;
+  const savedTheme = localStorage.getItem("theme");
   return (
     <Grid size={4}>
       <a href={technology?.url} target="_blank">
-        <img src={technology?.logo} className="logoStyle" />
+        <img src={savedTheme === 'light' ? technology?.logo : (technology?.darkModeLogo ? technology?.darkModeLogo : technology?.logo )} className="logoStyle" />
       </a>
       <p>{technology?.label}</p>
     </Grid>

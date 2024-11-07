@@ -9,14 +9,15 @@ import profile from '../../Images/profile.JPG'
 import "./About.css";
 
 const About = () => {
+  const savedTheme = localStorage.getItem("theme");
   return (
     <Box sx={{ width: "100%" }}>
       <Chip label="About Me"  className="aboutTile"/>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 2 }} className="aboutbody">
       
         <Grid size={6}  className="aboutSec1">
-          <img src={profile} className="profileStyle"/>
-          <div />
+          <img src={profile} className={savedTheme === 'light' ? 'imagelight profileStyle' :"imageDark profileStyle"}/>
+          <div className={savedTheme === 'light' ? 'imagelight imgStyle' : 'imageDark imgStyle'}/>
         </Grid>
         <Grid size={6} className="aboutSec2">
           <h3>Curious about me? Here you have it:</h3>

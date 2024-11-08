@@ -20,7 +20,7 @@ p {
 }
 
 .techStyle {
-    align-items: center;
+    align-items: self-end;
 }
 
 .logoStyle {

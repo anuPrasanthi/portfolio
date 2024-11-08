@@ -3,21 +3,27 @@
     top: 0;
     z-index: 1000;
     background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add slight shadow for better distinction */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-h3{
+
+.toolBarMob {
+    justify-content: space-between;
+}
+
+h3 {
     margin: 0px !important;
     font-size: 1.5rem;
 }
+
 .navListStyle {
     display: flex;
     margin-left: auto;
     padding: 0;
     align-items: center;
-    list-style: none; 
+    list-style: none;
 }
 
-ul {
+.navListStyle ul {
     display: flex;
     margin: 0;
     padding: 0;
@@ -38,18 +44,21 @@ li {
 li:last-child {
     padding-right: 0;
 }
-.dividerStyle{
+
+.dividerStyle {
     width: 0.125rem !important;
     height: 1.5rem !important;
     align-self: center !important;
     border: 0.09rem solid !important;
     margin: 0 20px !important
 }
+
 .darkStyle {
     float: left;
     cursor: pointer;
     margin-right: 20px;
 }
-.cvStyle{
+
+.cvStyle {
     color: #8ddd8d !important;
 }

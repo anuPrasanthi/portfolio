@@ -29,9 +29,9 @@
       transform: translateY(0);
     }
     40% {
-      transform: translateY(-30px); /* Bounce height */
+      transform: translateY(-30px);
     }
     60% {
-      transform: translateY(-15px); /* Second bounce height */
+      transform: translateY(-15px);
     }
   }

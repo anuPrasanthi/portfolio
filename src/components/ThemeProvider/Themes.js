@@ -1,24 +1,23 @@
-// src/components/ThemeProvider/themes.js
 export const themes = {
   light: {
     palette: {
-      mode: 'light',
+      mode: "light",
       primary: {
-        main: '#1976d2', // Light theme primary color
+        main: "#1976d2",
       },
       secondary: {
-        main: '#dc004e', // Light theme secondary color
+        main: "#dc004e",
       },
     },
   },
   dark: {
     palette: {
-      mode: 'dark',
+      mode: "dark",
       primary: {
-        main: '#90caf9', // Dark theme primary color
+        main: "#90caf9",
       },
       secondary: {
-        main: '#f50057', // Dark theme secondary color
+        main: "#f50057",
       },
     },
   },

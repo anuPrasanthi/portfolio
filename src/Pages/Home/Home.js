@@ -9,7 +9,14 @@ import "./Home.css";
 const Home = () => {
   const savedTheme = localStorage.getItem("theme");
   return (
-    <div className={savedTheme ==='light' ? 'lightmode homeContainer' : "darkMode homeContainer"} id="home">
+    <div
+      className={
+        savedTheme === "light"
+          ? "lightmode homeContainer"
+          : "darkMode homeContainer"
+      }
+      id="home"
+    >
       <Grid container spacing={2} className="subContainer">
         <Grid size={8} className="sec1Style">
           <span>
@@ -45,7 +52,6 @@ const Home = () => {
         </Grid>
         <ScrollDownIndicator />
       </Grid>
-      
     </div>
   );
 };

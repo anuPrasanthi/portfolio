@@ -1,4 +1,3 @@
-// src/components/NavBar/NavBar.js
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -9,8 +8,6 @@ import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import Divider from "@mui/material/Divider";
 import Resume from "../../Lib/Resume.pdf";
-import IconButton from '@mui/joy/IconButton';
-import Menu from '@mui/icons-material/Menu';
 import DrawerMobile from "../Drawer/Drawer";
 import "../../global.css";
 import "./NavBar.css";
@@ -26,8 +23,8 @@ export default function NavBar(props) {
   ];
 
   const handleClick = (e, val) => {
-    e.preventDefault(); // Prevent default link behavior
-    navigate(val.path); // Update the URL
+    e.preventDefault();
+    navigate(val.path);
     const element = document.getElementById(val.path.substring(1));
     if (element) {
       element.scrollIntoView({
@@ -36,18 +33,17 @@ export default function NavBar(props) {
       });
     }
   };
-
   return (
     <Box sx={{ flexGrow: 1 }} className="appBar">
       <AppBar position="static" color="">
-        <Toolbar className="toolBarStyle">
+        <Toolbar className={isMobile ? "toolBarMob" : "toolBarStyle"}>
           <h3>{"<AP />"}</h3>
           {isMobile ? (
             <DrawerMobile
-            navItems={navItems}
-            theme={theme}
-            handleTheme={handleTheme}
-          />
+              navItems={navItems}
+              theme={theme}
+              handleTheme={handleTheme}
+            />
           ) : (
             <>
               <div className="navListStyle">
@@ -66,15 +62,9 @@ export default function NavBar(props) {
                 handleTheme={handleTheme}
               />
               {theme === "light" ? (
-                <DarkModeIcon
-                  className="darkStyle"
-                  onClick={handleTheme}
-                />
+                <DarkModeIcon className="darkStyle" onClick={handleTheme} />
               ) : (
-                <LightModeIcon
-                  className="darkStyle"
-                  onClick={handleTheme}
-                />
+                <LightModeIcon className="darkStyle" onClick={handleTheme} />
               )}
               <a href={Resume} download="AnuPrasanthi_CV.pdf">
                 <Button className="cvStyle">Download CV</Button>

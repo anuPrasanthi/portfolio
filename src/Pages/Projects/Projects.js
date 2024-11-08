@@ -31,6 +31,7 @@ const Projects = () => {
       name: "TickeTribe",
       skills: [
         "React",
+        "Redux",
         "Node",
         "Express",
         "MongoDB",

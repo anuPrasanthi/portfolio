@@ -7,6 +7,7 @@ import PhoneAndroidOutlinedIcon from "@mui/icons-material/PhoneAndroidOutlined";
 import ContentCopyOutlinedIcon from "@mui/icons-material/ContentCopyOutlined";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import Footer from "../../components/Footer/Footer";
 import "./ContactMe.css";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -85,6 +86,7 @@ const ContactMe = () => {
           </a>
         </Grid>
       </Grid>
+      <Footer/>
       <Snackbar
         open={snackbarOpen}
         autoHideDuration={3000}

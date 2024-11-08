@@ -15,7 +15,7 @@ const Footer = () => {
   return (
     <Item>
       <p className="footerStyle">
-       <CopyrightIcon/> 2024 | Designed and coded with ❤️️ by AnuPrasanthi Pothula
+       <CopyrightIcon/> 2024 | Designed and &nbsp;<a href="https://github.com/anuPrasanthi/portfolio" style={{color:'grey'}}> Coded </a>&nbsp; with ❤️️ by AnuPrasanthi Pothula
       </p>
     </Item>
   );

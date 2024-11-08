@@ -1,9 +1,7 @@
-// src/App.js
 import React, { useState, useEffect } from "react";
 import BackgroundEffect from "./components/BackgroundEffect";
 import NavBar from "./components/NavBar/NavBar";
 import AppRoute from "./Routes/AppRoute";
-import FloatingCircle from "./components/FloatingBubble/FloatingBubble";
 import { ThemeProvider } from "./components/ThemeProvider/ThemeProvider";
 import "./App.css";
 
@@ -19,17 +17,15 @@ const App = () => {
       localStorage.setItem("theme", theme);
     }
   }, []);
+  const handleResize = () => {
+    setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+  };
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Mobile screen width threshold
-    };
-
-    handleResize(); // Check on load
-    window.addEventListener('resize', handleResize); // Listen for window resize
-    return () => window.removeEventListener('resize', handleResize); // Cleanup listener
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
-
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
@@ -45,7 +41,6 @@ const App = () => {
       <div className="App">
         <NavBar handleTheme={toggleTheme} theme={theme} isMobile={isMobile} />
         <AppRoute />
-        {/* <FloatingCircle/> */}
         <BackgroundEffect />
       </div>
     </ThemeProvider>

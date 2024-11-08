@@ -1,0 +1,14 @@
+.drawerList{
+    color: white;
+}
+.drawerListlight{
+    color: black;
+}
+.listStyle {
+    padding-top: 20px !important;
+}
+.sectionStyle{
+    display: inline-flex;
+    padding-top: 10px;
+    align-items: center;
+}

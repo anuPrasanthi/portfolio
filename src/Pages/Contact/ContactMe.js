@@ -1,15 +1,12 @@
-// Home.js
 import React, { useState } from "react";
-import FloatingCircle from "../../components/FloatingBubble/FloatingBubble";
-import ScrollDownIndicator from "../ScrollDownIndicator/ScrollDownIndicator";
 import Grid from "@mui/material/Grid2";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import { Box, Typography, Snackbar, Chip } from "@mui/material";
 import MuiAlert from "@mui/material/Alert";
-import PhoneAndroidOutlinedIcon from '@mui/icons-material/PhoneAndroidOutlined';
+import PhoneAndroidOutlinedIcon from "@mui/icons-material/PhoneAndroidOutlined";
 import ContentCopyOutlinedIcon from "@mui/icons-material/ContentCopyOutlined";
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import "./ContactMe.css";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -26,7 +23,7 @@ const ContactMe = () => {
     console.log(e);
     navigator.clipboard.writeText(val);
     setCopiedVal(e);
-    setSnackbarOpen(true); 
+    setSnackbarOpen(true);
   };
   const handleCloseSnackbar = (event, reason) => {
     if (reason === "clickaway") {
@@ -64,21 +61,29 @@ const ContactMe = () => {
           />
         </Typography>
         <Typography variant="subtitle1" component="div">
-        You may also find me on these platforms!
+          You may also find me on these platforms!
         </Typography>
         <Grid
-        container
-        rowSpacing={1}
-        columnSpacing={{ xs: 3, sm: 3 }}
-        className='socialStyle'
-      >
-       <a href="https://github.com/anuPrasanthi" target="_blank">
-        <GitHubIcon style={savedTheme==='light' ? { color: 'black' } :{ color: 'white' }}/>
-      </a>
-      <a href="https://www.linkedin.com/in/anu-prasanthi-pothula-3a7716182/" target="_blank" rel="noopener noreferrer">
-      <LinkedInIcon className="linkedinStyle"/>
-      </a>
-      </Grid>
+          container
+          rowSpacing={1}
+          columnSpacing={{ xs: 3, sm: 3 }}
+          className="socialStyle"
+        >
+          <a href="https://github.com/anuPrasanthi" target="_blank">
+            <GitHubIcon
+              style={
+                savedTheme === "light" ? { color: "black" } : { color: "white" }
+              }
+            />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/anu-prasanthi-pothula-3a7716182/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <LinkedInIcon className="linkedinStyle" />
+          </a>
+        </Grid>
       </Grid>
       <Snackbar
         open={snackbarOpen}

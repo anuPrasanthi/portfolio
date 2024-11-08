@@ -35,12 +35,12 @@ export const TECHNOLOGIES = [
       url: 'https://redux.js.org/',
     },
     {
-      label: 'Node.js',
+      label: 'Node',
       logo: LogoNodejs,
       url: 'https://nodejs.org/en',
     },
     {
-      label: 'Express.js',
+      label: 'Express',
       logo: LogoExpress,
       darkModeLogo: LogoExpressLight,
       url: 'https://expressjs.com/',

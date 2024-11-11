@@ -18,3 +18,8 @@ h1 {
   margin-top: 20px;
   font-size: 3rem;
 }
+@media (max-width: 768px) {
+  .App {
+    width: 100vw;
+  }
+}

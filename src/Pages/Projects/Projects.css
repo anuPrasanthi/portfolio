@@ -1,10 +1,79 @@
-.projectsTile{
- margin: 3rem 0;
-}
-.slideStyle {
- margin-bottom: 15px !important;
- color: #8ddd8d !important;
-}
-.descStyle {
- margin-bottom: 15px !important;
-}
+
+.projectsTile {
+    margin: 3rem 0;
+  }
+
+  .slideStyle {
+    margin-bottom: 15px !important;
+    color: #8ddd8d !important;
+  }
+
+  .descStyle {
+    margin-bottom: 15px !important;
+  }
+
+  .chip-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .slide:hover .blur-background {
+    filter: blur(8px);
+  }
+  
+  .slide:hover .coming-soon-overlay {
+    opacity: 1 !important;
+    color: #8ddd8d !important;
+    z-index: 2 !important;
+  }
+
+  .slide:hover .slideStyle,
+  .slide:hover .descStyle,
+  .slide:hover .chip-container {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  .coming-soon-overlay {
+    transition: opacity 0.3s ease-in-out;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .slide:hover .overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .slide {
+    position: relative;
+    padding: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .blur-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(https://via.placeholder.com/800x300) no-repeat center center;
+    background-size: cover;
+    filter: blur(0px);
+    transition: filter 0.3s ease-in-out;
+    z-index: -1;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.3s ease-in-out;
+    z-index: 0;
+  }
+  

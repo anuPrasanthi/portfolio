@@ -22,10 +22,11 @@ const Projects = () => {
 
   const projectInfo = [
     {
-      name: "GlamUp",
-      skills: ["React", "Redux", "JavaScript", "Node.Js", "MaterialUi", "CSS"],
+      name: "MealMaster",
+      skills: ["React", "Redux", "JavaScript", "Node.Js", "MaterialUi", "Mongodb"],
       description:
-        "A modern and user-friendly e-commerce platform that redefines the online shopping experience. Glamup offers a diverse range of clothing and accessories, catering to various styles and preferences.",
+        "A food delivery platform that focuses on meal preparation kits, where users can choose from a range of meal kits (ingredients and recipe included), and get them delivered to their doorstep with real-time updates.",
+      message: "COMING SOON",
     },
     {
       name: "TickeTribe",
@@ -41,6 +42,7 @@ const Projects = () => {
       ],
       description:
         "An event booking platform where users can see available events in real-time, book tickets, and receive instant updates on availability. Add features like event reminders, QR code generation for ticket verification, and seat selection.",
+      message: "COMING SOON",
     },
   ];
 
@@ -53,7 +55,44 @@ const Projects = () => {
       >
         <Slider {...settings}>
           {projectInfo.map((project, index) => (
-            <div key={index} className="slide" style={{ padding: "20px" }}>
+            <div
+              key={index}
+              className="slide"
+              style={{
+                position: "relative", // To position elements inside the slide
+                padding: "20px",
+                borderRadius: "8px",
+                overflow: "hidden", // Ensure no elements overflow the borders
+              }}
+            >
+              <div
+                className="blur-background"
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: `url(https://via.placeholder.com/800x300) no-repeat center center`, // Background image for demo
+                  backgroundSize: "cover",
+                  filter: "blur(0px)",
+                  transition: "filter 0.3s ease-in-out",
+                  zIndex: -1, // Ensure the image is behind the content
+                }}
+              />
+              <div
+                className="overlay"
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  //backgroundColor: "rgba(0, 0, 0, 0.4)", // Dark semi-transparent overlay
+                  transition: "background-color 0.3s ease-in-out",
+                  zIndex: -1, // Behind the content
+                }}
+              />
               <Typography variant="h5" align="center" className="slideStyle">
                 {project.name}
               </Typography>
@@ -66,6 +105,7 @@ const Projects = () => {
                 {project.description}
               </Typography>
               <Box
+                className='chip-container'
                 sx={{ display: "flex", justifyContent: "center", gap: "8px" }}
               >
                 {project.skills.map((skill, idx) => (
@@ -82,6 +122,28 @@ const Projects = () => {
                   />
                 ))}
               </Box>
+
+              {/* Display "Coming Soon" message on hover */}
+              {project?.message && (
+                <div
+                  className="coming-soon-overlay"
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    opacity: 0, // Initially hidden
+                    color: "#8ddd8d", // Make the text color green (or adjust accordingly)
+                    fontSize: "24px",
+                    textAlign: "center",
+                    transition: "opacity 0.3s ease-in-out", // Smooth transition on hover
+                    fontWeight: "bold",
+                    zIndex: 2, // Ensure it's on top of everything
+                  }}
+                >
+                  {project.message}
+                </div>
+              )}
             </div>
           ))}
         </Slider>

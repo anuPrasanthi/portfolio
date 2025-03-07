@@ -23,6 +23,7 @@ const Skills = () => {
 
   const roles = [
     { name: "Full Stack Developer", short: "FS" },
+    { name: "Software Engineer", short: "SE" },
     { name: "Sr.Frontend Developer", short: "SD" },
   ];
   return (

@@ -1,12 +1,13 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.5dff9ac8.css",
-    "main.js": "/portfolio/static/js/main.d7b99f6c.js",
+    "main.js": "/portfolio/static/js/main.10d6b3fe.js",
     "static/js/453.1407b060.chunk.js": "/portfolio/static/js/453.1407b060.chunk.js",
     "static/media/dark.jpg": "/portfolio/static/media/dark.3a68886503f7bc3cb725.jpg",
     "static/media/profile.JPG": "/portfolio/static/media/profile.ac95cccefb491e2bcaba.JPG",
     "static/media/white.jpg": "/portfolio/static/media/white.b020272d59a48cb49999.jpg",
-    "static/media/Resume.pdf": "/portfolio/static/media/Resume.2c588978ab84b2b4a620.pdf",
+    "static/media/echosphere.png": "/portfolio/static/media/echosphere.1de92304cf7cb16f3c2e.png",
+    "static/media/Resume.pdf": "/portfolio/static/media/Resume.616e90da09c5282cf5fa.pdf",
     "static/media/anu.jpg": "/portfolio/static/media/anu.c02a4bab287f157daf68.jpg",
     "static/media/sass.svg": "/portfolio/static/media/sass.2e6050d0e91da0a99b09a235cb0cdff7.svg",
     "static/media/react.svg": "/portfolio/static/media/react.ee15884ec3e8a337c4aa08b4630d9625.svg",
@@ -27,11 +28,11 @@
     "static/media/js.svg": "/portfolio/static/media/js.0b20a0cb19fd24035d41fe3aedc7fc47.svg",
     "index.html": "/portfolio/index.html",
     "main.5dff9ac8.css.map": "/portfolio/static/css/main.5dff9ac8.css.map",
-    "main.d7b99f6c.js.map": "/portfolio/static/js/main.d7b99f6c.js.map",
+    "main.10d6b3fe.js.map": "/portfolio/static/js/main.10d6b3fe.js.map",
     "453.1407b060.chunk.js.map": "/portfolio/static/js/453.1407b060.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5dff9ac8.css",
-    "static/js/main.d7b99f6c.js"
+    "static/js/main.10d6b3fe.js"
   ]
 }

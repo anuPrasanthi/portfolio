@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import Slider from "react-slick";
 import Box from "@mui/material/Box";
+import echosphere from '../../Images/echosphere.png'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Projects.css";
 
 const Projects = () => {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -22,10 +25,18 @@ const Projects = () => {
 
   const projectInfo = [
     {
+      name: "Echo Sphere",
+      skills: ["React", "Redux", "JavaScript", "Typescript", "MaterialUi"],
+      description:
+        "A sleek, responsive landing page designed for a Voice Agent product. UI built in React, focused on clean layout and user engagement.",
+      url: "https://merry-tartufo-7c2854.netlify.app/",
+      image: echosphere,
+    },
+    {
       name: "MealMaster",
       skills: ["React", "Redux", "JavaScript", "Node.Js", "MaterialUi", "Mongodb"],
       description:
-        "A food delivery platform that focuses on meal preparation kits, where users can choose from a range of meal kits (ingredients and recipe included), and get them delivered to their doorstep with real-time updates.",
+        "A meal kit delivery platform with real-time updates. UI is in progress.",
       message: "COMING SOON",
     },
     {
@@ -41,7 +52,7 @@ const Projects = () => {
         "Firebase",
       ],
       description:
-        "An event booking platform where users can see available events in real-time, book tickets, and receive instant updates on availability. Add features like event reminders, QR code generation for ticket verification, and seat selection.",
+        "An event booking platform with real-time availability, reminders, and QR check-ins.",
       message: "COMING SOON",
     },
   ];
@@ -49,103 +60,101 @@ const Projects = () => {
   return (
     <>
       <Chip label="Projects" className="projectsTile" />
-      <Box
-        className="carousel-container"
-        sx={{ width: "100%", maxWidth: 800, margin: "auto" }}
-      >
+      <Box className="carousel-container" sx={{ width: "100%", maxWidth: 800, margin: "auto" }}>
         <Slider {...settings}>
-          {projectInfo.map((project, index) => (
-            <div
-              key={index}
-              className="slide"
-              style={{
-                position: "relative", // To position elements inside the slide
-                padding: "20px",
-                borderRadius: "8px",
-                overflow: "hidden", // Ensure no elements overflow the borders
-              }}
-            >
+          {projectInfo.map((project, index) => {
+            const isHovered = hoveredIndex === index;
+            const hasImage = !!project.image;
+            const hasUrl = !!project.url;
+
+            return (
               <div
-                className="blur-background"
+                key={index}
+                className="slide"
                 style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  background: `url(https://via.placeholder.com/800x300) no-repeat center center`, // Background image for demo
-                  backgroundSize: "cover",
-                  filter: "blur(0px)",
-                  transition: "filter 0.3s ease-in-out",
-                  zIndex: -1, // Ensure the image is behind the content
+                  position: "relative",
+                  padding: "20px",
+                  borderRadius: "8px",
+                  overflow: "hidden",
+                  cursor: hasUrl ? "pointer" : "default",
                 }}
-              />
-              <div
-                className="overlay"
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  //backgroundColor: "rgba(0, 0, 0, 0.4)", // Dark semi-transparent overlay
-                  transition: "background-color 0.3s ease-in-out",
-                  zIndex: -1, // Behind the content
+                onClick={() => {
+                  if (hasUrl) window.open(project.url, "_blank");
                 }}
-              />
-              <Typography variant="h5" align="center" className="slideStyle">
-                {project.name}
-              </Typography>
-              <Typography
-                variant="body1"
-                align="center"
-                color="textSecondary"
-                className="descStyle"
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
               >
-                {project.description}
-              </Typography>
-              <Box
-                className='chip-container'
-                sx={{ display: "flex", justifyContent: "center", gap: "8px" }}
-              >
-                {project.skills.map((skill, idx) => (
-                  <Chip
-                    key={idx}
-                    label={skill}
-                    variant="outlined"
-                    size="small"
-                    sx={{
-                      borderColor: "#8ddd8d",
-                      color: "#8ddd8d",
-                      marginBottom: "15px",
+                {/* Hover background logic */}
+                {isHovered && (
+                  <div
+                    className="hover-background"
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: hasImage
+                        ? `url(${project.image}) no-repeat center center`
+                        : "#000",
+                      backgroundSize: "cover",
+                      filter: hasImage ? "blur(2px)" : "none",
+                      transition: "all 0.3s ease-in-out",
+                      zIndex: -1,
                     }}
                   />
-                ))}
-              </Box>
+                )}
 
-              {/* Display "Coming Soon" message on hover */}
-              {project?.message && (
-                <div
-                  className="coming-soon-overlay"
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    opacity: 0, // Initially hidden
-                    color: "#8ddd8d", // Make the text color green (or adjust accordingly)
-                    fontSize: "24px",
-                    textAlign: "center",
-                    transition: "opacity 0.3s ease-in-out", // Smooth transition on hover
-                    fontWeight: "bold",
-                    zIndex: 2, // Ensure it's on top of everything
-                  }}
+                <Typography variant="h5" align="center" className="slideStyle">
+                  {project.name}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  align="center"
+                  color="textSecondary"
+                  className="descStyle"
                 >
-                  {project.message}
-                </div>
-              )}
-            </div>
-          ))}
+                  {project.description}
+                </Typography>
+                <Box className="chip-container" sx={{ display: "flex", justifyContent: "center", gap: "8px" }}>
+                  {project.skills.map((skill, idx) => (
+                    <Chip
+                      key={idx}
+                      label={skill}
+                      variant="outlined"
+                      size="small"
+                      sx={{
+                        borderColor: "#8ddd8d",
+                        color: "#8ddd8d",
+                        marginBottom: "15px",
+                      }}
+                    />
+                  ))}
+                </Box>
+
+                {/* Coming Soon message only on hover and when no URL */}
+                {!hasUrl && project.message && isHovered && (
+                  <div
+                    className="coming-soon-overlay"
+                    style={{
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      color: "#8ddd8d",
+                      fontSize: "24px",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                      zIndex: 2,
+                      pointerEvents: "none",
+                    }}
+                  >
+                    {project.message}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </Slider>
       </Box>
     </>

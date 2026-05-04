@@ -6,32 +6,17 @@ import Skills from "../Pages/Skills/Skills";
 import Projects from "../Pages/Projects/Projects";
 import ContactMe from "../Pages/Contact/ContactMe";
 
-const AppRoutes = () => {
-  return (
-    <Routes>
-      <Route path="/portfolio/" element={<AllSections />} />
-    </Routes>
-  );
-};
-
 const AllSections = () => (
   <>
-    <div id="home">
-      <Home />
-    </div>
-    <div id="about">
-      <About />
-    </div>
-    <div id="skills">
-      <Skills />
-    </div>
-    <div id="projects">
-      <Projects />
-    </div>
-    <div id="contact">
-      <ContactMe />
-    </div>
+    <Home /><About /><Skills /><Projects /><ContactMe />
   </>
 );
 
-export default AppRoutes;
+const AppRoute = () => (
+  <Routes>
+    <Route path="/portfolio/" element={<AllSections />} />
+    <Route path="/" element={<AllSections />} />
+  </Routes>
+);
+
+export default AppRoute;

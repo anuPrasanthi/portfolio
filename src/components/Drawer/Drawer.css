@@ -1,14 +1,23 @@
-.drawerList{
-    color: white;
+.ham { display:flex; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:5px; }
+.ham span { display:block; width:22px; height:1.5px; background:var(--fg-1); border-radius:1px; transition:var(--tr); }
+.doverlay { position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:1100; backdrop-filter:blur(4px); }
+.drawer {
+  position:fixed; top:0; right:0; bottom:0; width:min(300px,80vw); z-index:1200;
+  background:var(--bg-1); border-left:1px solid var(--border);
+  display:flex; flex-direction:column; padding:1.5rem;
+  transform:translateX(100%); transition:transform .3s cubic-bezier(.4,0,.2,1);
 }
-.drawerListlight{
-    color: black;
-}
-.listStyle {
-    padding-top: 20px !important;
-}
-.sectionStyle{
-    display: inline-flex;
-    padding-top: 10px;
-    align-items: center;
-}
+.drawer.open { transform:translateX(0); }
+.drawer-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:2.5rem; }
+.drawer-brand { font-family:var(--serif); font-size:1.3rem; color:var(--fg-0); }
+.drawer-brand span { color:var(--acc); }
+.drawer-close { width:32px; height:32px; border-radius:50%; background:none; border:1px solid var(--border); color:var(--fg-1); cursor:pointer; font-size:.85rem; display:flex; align-items:center; justify-content:center; transition:var(--tr); }
+.drawer-close:hover { border-color:var(--acc); color:var(--acc); }
+.drawer-nav { display:flex; flex-direction:column; gap:.2rem; flex:1; }
+.drawer-link { display:flex; align-items:center; gap:10px; font-size:1rem; font-weight:500; text-decoration:none; color:var(--fg-1); padding:.8rem 1rem; border-radius:var(--r-sm); transition:var(--tr); }
+.drawer-link:hover { color:var(--acc); background:var(--acc-d2); }
+.drawer-num { font-family:var(--mono); font-size:.6rem; color:var(--acc); }
+.drawer-foot { display:flex; flex-direction:column; gap:.65rem; }
+.drawer-theme { font-family:var(--mono); font-size:.72rem; padding:.6rem; border-radius:var(--r-sm); background:none; border:1px solid var(--border); color:var(--fg-1); cursor:pointer; transition:var(--tr); }
+.drawer-theme:hover { border-color:var(--acc); color:var(--acc); }
+.drawer-cv { font-family:var(--mono); font-size:.75rem; font-weight:500; letter-spacing:.06em; text-decoration:none; text-align:center; padding:.7rem; border-radius:var(--r-sm); background:var(--acc); color:#fff; transition:var(--tr); }

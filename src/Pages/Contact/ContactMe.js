@@ -1,103 +1,128 @@
-import React, { useState } from "react";
-import Grid from "@mui/material/Grid2";
-import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
-import { Box, Typography, Snackbar, Chip } from "@mui/material";
-import MuiAlert from "@mui/material/Alert";
-import PhoneAndroidOutlinedIcon from "@mui/icons-material/PhoneAndroidOutlined";
-import ContentCopyOutlinedIcon from "@mui/icons-material/ContentCopyOutlined";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import Footer from "../../components/Footer/Footer";
+import React, { useState, useRef, useEffect } from "react";
 import "./ContactMe.css";
 
-const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+const EMAIL = "anuprasanthipothula@gmail.com";
+const PHONE = "+1 (437) 974-5872";
 
-const ContactMe = () => {
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [copiedVal, setCopiedVal] = useState("");
-  const savedTheme = localStorage.getItem("theme");
-  const email = "anuprasanthipothula@gmail.com";
-  const mobileno = "+1(437)974-5872";
-  const handleCopyEmail = (e, val) => {
-    console.log(e);
+export default function ContactMe() {
+  const [copied, setCopied] = useState("");
+  const ref = useRef(null);
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) e.target.querySelectorAll(".reveal").forEach((el,i) => {
+        setTimeout(() => el.classList.add("in"), i*80);
+      });
+    }, { threshold: .08 });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+
+  const copy = (val, label) => {
     navigator.clipboard.writeText(val);
-    setCopiedVal(e);
-    setSnackbarOpen(true);
+    setCopied(label);
+    setTimeout(() => setCopied(""), 2200);
   };
-  const handleCloseSnackbar = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setSnackbarOpen(false);
-  };
-  return (
-    <Box sx={{ width: "100%" }}>
-      <Chip label="Contact" className="contactTile" />
-      <Grid
-        container
-        rowSpacing={1}
-        columnSpacing={{ xs: 1, sm: 1 }}
-        className="contactStyle"
-      >
-        <p>
-          What’s next? Feel free to reach out to me if you are looking for a
-          developer, have a query, or simply want to connect.
-        </p>
-        <Typography variant="subtitle1" component="div" className="emailStyle">
-          <EmailOutlinedIcon className="iconStyle" />
-          &nbsp;{email}&nbsp;
-          <ContentCopyOutlinedIcon
-            onClick={(e) => handleCopyEmail("Email", email)}
-            className="copyStyle"
-          />
-        </Typography>
-        <Typography variant="subtitle1" component="div">
-          <PhoneAndroidOutlinedIcon className="iconStyle" />
-          &nbsp;{mobileno}&nbsp;
-          <ContentCopyOutlinedIcon
-            onClick={(e) => handleCopyEmail("Mobile Number", mobileno)}
-            className="copyStyle"
-          />
-        </Typography>
-        <Typography variant="subtitle1" component="div">
-          You may also find me on these platforms!
-        </Typography>
-        <Grid
-          container
-          rowSpacing={1}
-          columnSpacing={{ xs: 3, sm: 3 }}
-          className="socialStyle"
-        >
-          <a href="https://github.com/anuPrasanthi" target="_blank">
-            <GitHubIcon
-              style={
-                savedTheme === "light" ? { color: "black" } : { color: "white" }
-              }
-            />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/anu-prasanthi-pothula-3a7716182/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <LinkedInIcon className="linkedinStyle" />
-          </a>
-        </Grid>
-      </Grid>
-      <Footer/>
-      <Snackbar
-        open={snackbarOpen}
-        autoHideDuration={3000}
-        onClose={handleCloseSnackbar}
-      >
-        <Alert onClose={handleCloseSnackbar} severity="success">
-          {copiedVal} copied to clipboard!
-        </Alert>
-      </Snackbar>
-    </Box>
-  );
-};
 
-export default ContactMe;
+  const SOCIALS = [
+    { name:"LinkedIn", url:"https://www.linkedin.com/in/anu-prasanthi-pothula-3a7716182/" },
+    { name:"GitHub",   url:"https://github.com/anuPrasanthi" },
+    { name:"VocalEats",url:"https://vocaleats.com" },
+    { name:"Portfolio",url:"https://anuprasanthi.github.io/portfolio/" },
+  ];
+
+  const FACTS = [
+    ["Response time","< 24 hours"],
+    ["Target role","Senior SWE / FullStack Developer"],
+    ["Work type","Remote / Hybrid / On-site"],
+    ["Location","Toronto, ON, Canada"],
+  ];
+
+  const CopyIcon = () => (
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+    </svg>
+  );
+  const CheckIcon = () => (
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--green)" strokeWidth="2.5">
+      <polyline points="20 6 9 17 4 12"/>
+    </svg>
+  );
+
+  return (
+    <section className="contact" id="contact" ref={ref}>
+      <div className="contact-inner">
+        <div className="chip reveal">Contact</div>
+
+        <div className="contact-grid">
+          <div className="contact-left">
+            <h2 className="sec-title reveal">
+              Let's build<br /><em>together</em>
+            </h2>
+            <p className="contact-sub reveal">
+              Open to Senior Software Engineer roles in Toronto — hybrid or on-site.
+              Have an interesting opportunity? I'd love to hear about it.
+            </p>
+
+            <div className="contact-items reveal">
+              {[[EMAIL,"Email"],[PHONE,"Phone"]].map(([val,label]) => (
+                <div key={label} className="ci">
+                  <div className="ci-body">
+                    <span className="ci-label">{label}</span>
+                    <span className="ci-val">{val}</span>
+                  </div>
+                  <button className="ci-copy" onClick={() => copy(val,label)} title={`Copy ${label}`}>
+                    {copied===label ? <CheckIcon /> : <CopyIcon />}
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            <div className="contact-socials reveal">
+              {SOCIALS.map((s,i) => (
+                <a key={i} href={s.url} target="_blank" rel="noreferrer" className="csoc">{s.name} ↗</a>
+              ))}
+            </div>
+          </div>
+
+          <div className="contact-right">
+            <div className="contact-avail reveal">
+              <div className="avail-dot" />
+              <div>
+                <p className="avail-title">Available for new opportunities</p>
+                <p className="avail-sub">Toronto, ON · Hybrid or On-site preferred</p>
+              </div>
+            </div>
+            <div className="contact-facts reveal">
+              {FACTS.map(([l,v],i) => (
+                <div key={i} className="cfact">
+                  <span className="cfact-l">{l}</span>
+                  <span className="cfact-v">{v}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="footer-inner">
+          <span className="footer-brand">Anu<span>.</span></span>
+          <p className="footer-copy">© 2026 · Designed & built by Anu Prasanthi Pothula · Toronto, ON</p>
+          <div className="footer-links">
+            {SOCIALS.slice(0,3).map((s,i) => (
+              <a key={i} href={s.url} target="_blank" rel="noreferrer" className="footer-link">{s.name}</a>
+            ))}
+          </div>
+        </div>
+      </footer>
+
+      {copied && (
+        <div className="toast">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          {copied} copied!
+        </div>
+      )}
+    </section>
+  );
+}

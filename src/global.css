@@ -1,3 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap');
+
+/* ─── DESIGN TOKENS ─────────────────────────────────────────────────── */
 :root {
-    --secondaryColor: #ffffff;
-  }
+  /* DARK MODE — charcoal + ivory + warm copper */
+  --bg-0:    #141210;   /* deepest background */
+  --bg-1:    #1c1916;   /* surface */
+  --bg-2:    #232018;   /* card */
+  --bg-3:    #2a271e;   /* card hover / elevated */
+
+  --fg-0:    #f0ece4;   /* primary text */
+  --fg-1:    #a89f8c;   /* secondary text */
+  --fg-2:    #5c5649;   /* muted / dividers */
+
+  --acc:     #c8915a;   /* copper accent */
+  --acc-dim: rgba(200,145,90,0.12);
+  --acc-d2:  rgba(200,145,90,0.06);
+
+  --teal:    #4a9b8e;
+  --teal-dim:rgba(74,155,142,0.12);
+
+  --border:  rgba(200,145,90,0.1);
+  --border2: rgba(200,145,90,0.2);
+
+  --green:   #5f9e72;
+
+  /* FONT FAMILIES */
+  --serif:  'DM Serif Display', serif;
+  --sans:   'Inter', sans-serif;
+  --mono:   'DM Mono', monospace;
+
+  --r:    10px;
+  --r-sm: 5px;
+  --tr:   all 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+
+body.light {
+  /* LIGHT MODE — cream + navy + copper */
+  --bg-0:    #faf8f4;
+  --bg-1:    #f3efea;
+  --bg-2:    #ffffff;
+  --bg-3:    #f7f4ef;
+
+  --fg-0:    #1a1712;
+  --fg-1:    #5c5244;
+  --fg-2:    #a89f8c;
+
+  --acc:     #b5763a;
+  --acc-dim: rgba(181,118,58,0.1);
+  --acc-d2:  rgba(181,118,58,0.05);
+
+  --teal:    #2e7d72;
+  --teal-dim:rgba(46,125,114,0.1);
+
+  --border:  rgba(181,118,58,0.12);
+  --border2: rgba(181,118,58,0.22);
+
+  --green:   #3d7a52;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg-0);
+  color: var(--fg-0);
+  overflow-x: hidden;
+  transition: background 0.4s, color 0.4s;
+}
+
+::selection { background: var(--acc); color: #fff; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--acc); border-radius: 2px; }
+
+/* ─── SHARED UTILITIES ────────────────────────────────────────────── */
+.chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 0.67rem;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 4px 14px; border-radius: 99px;
+  border: 1px solid var(--acc); color: var(--acc);
+  margin-bottom: 1.1rem;
+}
+.chip::before {
+  content: ''; width: 5px; height: 5px;
+  background: var(--acc); border-radius: 50%;
+}
+
+.sec-title {
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 4vw, 2.9rem);
+  font-weight: 400; line-height: 1.15;
+  color: var(--fg-0); margin-bottom: 0.6rem;
+}
+.sec-title em { font-style: italic; color: var(--acc); }
+
+.reveal {
+  transform: translateY(22px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.in { opacity: 1; transform: none; }

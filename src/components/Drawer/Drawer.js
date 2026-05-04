@@ -1,86 +1,43 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import IconButton from "@mui/material/IconButton";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import Divider from "@mui/material/Divider";
-import Button from "@mui/material/Button";
-import Menu from "@mui/icons-material/Menu";
+import React, { useState } from "react";
+import Resume from "../../Lib/Resume.pdf";
 import "./Drawer.css";
 
 export default function DrawerMobile({ navItems, theme, handleTheme }) {
-  const [open, setOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setOpen(!open);
+  const [open, setOpen] = useState(false);
+  const go = (e, path) => {
+    e.preventDefault(); setOpen(false);
+    setTimeout(() => {
+      const el = document.getElementById(path.replace("#",""));
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }, 220);
   };
-
   return (
-    <React.Fragment>
-      <IconButton
-        edge="start"
-        color="inherit"
-        aria-label="menu"
-        onClick={handleDrawerToggle}
-        variant="solid"
-      >
-        <Menu />
-      </IconButton>
-      <Drawer anchor="right" open={open} onClose={handleDrawerToggle}>
-        <Box
-          sx={{
-            width: 450,
-            display: "flex",
-            gap: 0.5,
-            ml: "auto",
-            mt: 1,
-            mr: 2,
-            justifyContent: "center",
-          }}
-          role="presentation"
-          onClick={handleDrawerToggle}
-          onKeyDown={handleDrawerToggle}
-        >
-          <Divider inset="none" />
-          <List className="listStyle">
-            {navItems.map((item, index) => (
-              <ListItem
-                button
-                key={index}
-                component="a"
-                href={item.path}
-                className={theme === "light" ? "drawerListlight" : "drawerList"}
-              >
-                <ListItemText primary={item.name} />
-              </ListItem>
-            ))}
-            <span className="sectionStyle">
-              {theme === "light" ? (
-                <DarkModeIcon
-                  onClick={handleTheme}
-                  sx={{ cursor: "pointer" }}
-                />
-              ) : (
-                <LightModeIcon
-                  onClick={handleTheme}
-                  sx={{ cursor: "pointer" }}
-                />
-              )}
-              <Button
-                href="Resume.pdf"
-                download="AnuPrasanthi_CV.pdf"
-                style={{ color: "#8ddd8d", marginLeft: "15px" }}
-              >
-                Download CV
-              </Button>
-            </span>
-          </List>
-        </Box>
-      </Drawer>
-    </React.Fragment>
+    <>
+      <button className="ham" onClick={() => setOpen(true)} aria-label="Menu">
+        <span/><span/><span/>
+      </button>
+      {open && <div className="doverlay" onClick={() => setOpen(false)} />}
+      <div className={`drawer ${open ? "open" : ""}`}>
+        <div className="drawer-top">
+          <span className="drawer-brand">Anu<span>.</span></span>
+          <button className="drawer-close" onClick={() => setOpen(false)}>✕</button>
+        </div>
+        <nav className="drawer-nav">
+          {navItems.map((item, i) => (
+            <a key={i} href={item.path} className="drawer-link" onClick={e => go(e, item.path)}>
+              <span className="drawer-num">0{i+1}.</span>{item.name}
+            </a>
+          ))}
+        </nav>
+        <div className="drawer-foot">
+          <button className="drawer-theme" onClick={handleTheme}>
+            {theme === "dark" ? "☀ Light Mode" : "☾ Dark Mode"}
+          </button>
+          <a href={Resume} download="AnuPrasanthi_Resume.pdf" className="drawer-cv">
+            Download Resume ↓
+          </a>
+        </div>
+      </div>
+    </>
   );
 }

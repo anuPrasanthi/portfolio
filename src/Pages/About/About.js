@@ -1,62 +1,78 @@
-import React from "react";
-import Chip from "@mui/material/Chip";
-import Grid from "@mui/material/Grid2";
-import Box from "@mui/material/Box";
+import React, { useEffect, useRef } from "react";
 import profile from "../../Images/profile.JPG";
 import "./About.css";
 
-const About = () => {
-  const savedTheme = localStorage.getItem("theme");
-  return (
-    <Box sx={{ width: "100%" }}>
-      <Chip label="About Me" className="aboutTile" />
-      <Grid
-        container
-        rowSpacing={1}
-        columnSpacing={{ xs: 1, sm: 2, md: 2 }}
-        className="aboutbody"
-      >
-        <Grid size={6} className="aboutSec1">
-          <img
-            src={profile}
-            className={
-              savedTheme === "light"
-                ? "imagelight profileStyle"
-                : "imageDark profileStyle"
-            }
-          />
-          <div
-            className={
-              savedTheme === "light"
-                ? "imagelight imgStyle"
-                : "imageDark imgStyle"
-            }
-          />
-        </Grid>
-        <Grid size={6} className="aboutSec2">
-          <h3>Curious about me? Here you have it:</h3>
-          <p>
-            In a world brimming with pixels and possibilities, I dance between
-            creativity and technology, crafting web experiences that spark joy
-            and curiosity. As a web developer, I see each project as an
-            opportunity to tell a story, inviting users on an unforgettable
-            journey. My approach blends a meticulous eye for detail with a
-            splash of playful innovation, ensuring that every interaction feels
-            as seamless as it is captivating.
-          </p>
-          <p>
-            Curiosity is my compass, guiding me through the ever-evolving
-            landscape of the digital realm. I thrive on collaboration, believing
-            that great ideas flourish when shared and explored together. Whether
-            I’m tackling a complex challenge or brainstorming fresh concepts, my
-            passion for creating memorable digital experiences shines through.
-            Join me on this adventure, and let’s bring visions to life with
-            creativity and flair.
-          </p>
-        </Grid>
-      </Grid>
-    </Box>
-  );
-};
+const HLS = [
+  { n:"7+",   l:"Years experience" },
+  { n:"90%+", l:"Test coverage" },
+  { n:"40%",  l:"API latency reduced" },
+  { n:"20%",  l:"Backend perf boost" },
+];
 
-export default About;
+export default function About() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) e.target.querySelectorAll(".reveal").forEach((el,i) => {
+        setTimeout(() => el.classList.add("in"), i*100);
+      });
+    }, { threshold: .08 });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <section className="about" id="about" ref={ref}>
+      <div className="about-inner">
+        <div className="chip reveal">About Me</div>
+        <div className="about-grid">
+          <div className="about-left reveal">
+            <div className="about-img-wrap">
+              <img src={profile} alt="Anu Prasanthi" className="about-img" />
+              <div className="about-img-frame" />
+            </div>
+            <div className="about-hls">
+              {HLS.map((h,i) => (
+                <div key={i} className="about-hl">
+                  <span className="hl-n">{h.n}</span>
+                  <span className="hl-l">{h.l}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="about-right">
+            <h2 className="sec-title reveal">
+              Crafting digital<br /><em>experiences</em>
+            </h2>
+            <p className="about-p reveal">
+              I'm a Senior Software Engineer with 7+ years building performant, scalable
+              applications across fintech, banking, and product environments. My core stack
+              is React, TypeScript, Redux, and Node.js.
+            </p>
+            <p className="about-p reveal">
+              I've shipped production systems at <strong>Capital One</strong>, <strong>Deloitte</strong>,
+              and <strong>Mphasis</strong> — spanning micro-frontend architecture, real-time
+              WebSocket features, secure auth flows, and AI voice integrations.
+            </p>
+            <p className="about-p reveal">
+              My latest independent project,{" "}
+              <a href="https://vocaleats.com" target="_blank" rel="noreferrer" className="about-link">VocalEats</a>
+              , is a live AI voice ordering platform for restaurants — built with React,
+              TypeScript, Tailwind CSS, and real-time voice AI APIs. A real product, shipped.
+            </p>
+            <div className="about-tags reveal">
+              {["React.js","TypeScript","Node.js","Redux","Next.js","AWS","MongoDB","AI/LLM"].map((t,i) => (
+                <span key={i} className="about-tag">{t}</span>
+              ))}
+            </div>
+            <div className="about-links reveal">
+              <a href="https://vocaleats.com" target="_blank" rel="noreferrer" className="btn-fill-sm">VocalEats ↗</a>
+              <a href="https://www.linkedin.com/in/anu-prasanthi-pothula-3a7716182/" target="_blank" rel="noreferrer" className="btn-ghost-sm">LinkedIn ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
